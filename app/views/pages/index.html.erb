@@ -1,0 +1,43 @@
+<br></br>
+<%= will_paginate @links %>
+
+<h2>I am a homepage</h2>
+<%= link_to "Add a link", new_link_path %>
+
+<p></p>
+
+<h1>Links</h1>
+
+<ul>
+  <% @links.each do |link| %>
+    <li><%= link_to link.title , link.url %> by: <%= 
+    		if link.user.present?
+    		link.user.email
+    		else
+    		"no user"  
+    		end
+    	%></br>
+
+    <% if current_user && current_user.votes.where(:link_id => link.id, :up => true).present? %>
+    *
+    <% else %>
+    <%= link_to "+", votes_path(:vote => {:link_id => link.id, :up => true}), :method => :post %>
+    <% end %> 
+    / 
+    <% if current_user && current_user.votes.where(:link_id => link.id, :up => false).present? %>
+    *
+    <% else %>
+    <%= link_to "-", votes_path(:vote => {:link_id => link.id, :up => false}), :method => :post %>
+    <% end %>
+
+    </br>
+
+    Votes: <%= link.votes.where(:up => true).count - link.votes.where(:up => false).count %>
+    
+    <p></p>
+    <%= link_to "comments", link %>	
+    <p></p>
+    </li>
+  <% end %>
+</ul>
+
