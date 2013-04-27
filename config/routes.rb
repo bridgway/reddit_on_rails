@@ -8,6 +8,8 @@ RedditOnRails::Application.routes.draw do
   resources :links
   resources :comments
   resources :votes
+
+  get 'search' => 'search#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
