@@ -75,7 +75,11 @@
 <% end %>
 
 <%= content_for :sidebar do %>
-  <%= link_to "Add a link", new_link_path %>
+  <%= link_to "Add a link", new_link_path %><br />
+<% end %>
+
+<%= content_for :sidebar do %>
+  <%= link_to "Awesome Blog", 'http://schneems.com' %>
 <% end %>
 
           <%= yield %>
