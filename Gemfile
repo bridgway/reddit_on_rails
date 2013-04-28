@@ -13,6 +13,12 @@ gem 'will_paginate', '~> 3.0.0'
 
 gem 'texticle', :require => 'texticle/rails'
 
+group :test do
+  gem 'database_cleaner'
+  gem 'capybara', '~> 1.1.2'
+  gem "launchy", "~> 2.3.0"
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
